@@ -6,8 +6,7 @@ import type { SiteConfig } from "../types/site";
  */
 const siteConfig = {
   meta: {
-    // TODO(운영 주소 확정 후 교체): QR 코드와 링크 미리보기 주소에 쓰입니다.
-    url: "https://jungdonghwa.example.com",
+    url: "https://donghwa-chi.vercel.app",
     title: "내 보험, 먼저 점검해 드립니다 | 정동화 GFC",
     description:
       "삼성생명 중앙법인지점 GFC 정동화입니다. 가입 권유보다 점검이 먼저입니다. 가입하신 보험을 있는 그대로 살펴봅니다.",
