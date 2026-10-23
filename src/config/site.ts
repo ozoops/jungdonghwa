@@ -30,8 +30,7 @@ const siteConfig = {
 
   contact: {
     phone: "010-2190-5833",
-    // TODO(오픈채팅 주소 확정 후 교체): 현재 값은 임시 주소입니다.
-    chatUrl: "https://open.kakao.com/o/REPLACE_ME",
+    chatUrl: "https://open.kakao.com/o/skvvjJTi",
     email: "ozoops5911@gmail.com",
     labels: { phone: "전화", chat: "오픈채팅", mail: "이메일" },
   },
