@@ -1,4 +1,4 @@
-// 기본 이미지(링크 미리보기 og-v2.png, 파비콘 icon.png, 임시 프로필 사진)를 만듭니다.
+// 기본 이미지(링크 미리보기 og-v3.png, 파비콘 icon.png, 임시 프로필 사진)를 만듭니다.
 // 실제 프로필 사진은 public/images/profile.webp 파일만 교체하면 됩니다.
 // 실행: node scripts/make-assets.mjs [--profile]   (--profile 을 붙여야 임시 프로필 사진을 다시 만듭니다)
 import { readFile } from "node:fs/promises";
@@ -11,14 +11,17 @@ const css = `@font-face{font-family:P;src:url(data:font/woff2;base64,${font});fo
 *{box-sizing:border-box;margin:0}body{font-family:P,sans-serif;background:#1E2A78;color:#fff}`;
 
 const photo = (await readFile("public/images/profile.webp")).toString("base64");
+const tagline = site.meta.title.split(" | ")[0];
 const ogHtml = `<style>${css}
-body{width:1200px;height:630px;display:flex;align-items:center;justify-content:center;gap:52px}
+body{width:1200px;height:630px;display:flex;align-items:center;justify-content:center;gap:56px}
 img{width:340px;height:340px;border-radius:50%;border:8px solid #fff;object-fit:cover;flex:none}
-.n{font-size:112px;font-weight:800;line-height:1.15}
-.o{margin-top:14px;font-size:44px;font-weight:500;color:#CBD2F6}
+.n{font-size:108px;font-weight:800;line-height:1.15}
+.o{margin-top:10px;font-size:42px;font-weight:500;color:#CBD2F6}
+hr{margin:30px 0 28px;border:0;height:3px;background:rgba(255,255,255,.35)}
+.t{font-size:48px;font-weight:700}
 </style><img src="data:image/webp;base64,${photo}" alt="">
 <div><div class="n">${site.person.name}</div>
-<div class="o">${site.person.role} · ${site.person.org}</div></div>`;
+<div class="o">${site.person.role} · ${site.person.org}</div><hr><div class="t">${tagline}</div></div>`;
 
 const iconHtml = `<style>${css}
 body{width:512px;height:512px;display:flex;align-items:center;justify-content:center;font-size:300px;font-weight:800;background:#1E2A78}
@@ -32,7 +35,7 @@ async function shot(html, w, h, out) {
   await page.screenshot({ path: out });
   await page.close();
 }
-await shot(ogHtml, 1200, 630, "public/images/og-v2.png");
+await shot(ogHtml, 1200, 630, "public/images/og-v3.png");
 await shot(iconHtml, 512, 512, "src/app/icon.png");
 await browser.close();
 

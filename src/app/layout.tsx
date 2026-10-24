@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   robots: site.meta.noindex ? { index: false, follow: false } : undefined,
   openGraph: {
     type: "website",
+    url: site.meta.url,
     locale: "ko_KR",
     siteName: site.meta.siteName,
     title: site.meta.title,
