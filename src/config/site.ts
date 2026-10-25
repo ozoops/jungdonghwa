@@ -7,11 +7,11 @@ import type { SiteConfig } from "../types/site";
 const siteConfig = {
   meta: {
     url: "https://donghwa-chi.vercel.app",
-    title: "내 보험, 먼저 점검해 드립니다 | 정동화 GFC",
+    title: "정동화 | 내 보험, 먼저 점검해 드립니다",
     description:
       "삼성생명 중앙법인지점 GFC 정동화입니다. 가입 권유보다 점검이 먼저입니다. 가입하신 보험을 있는 그대로 살펴봅니다.",
     siteName: "정동화 GFC",
-    ogImage: "/images/og-v3.png",
+    ogImage: "/images/og-v4.png",
     ogImageAlt: "정동화 GFC · 내 보험, 먼저 점검해 드립니다",
     themeColor: "#1E2A78",
     noindex: true,

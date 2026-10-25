@@ -1,4 +1,4 @@
-// 기본 이미지(링크 미리보기 og-v3.png, 파비콘 icon.png, 임시 프로필 사진)를 만듭니다.
+// 기본 이미지(링크 미리보기 og-v4.png, 파비콘 icon.png, 임시 프로필 사진)를 만듭니다.
 // 실제 프로필 사진은 public/images/profile.webp 파일만 교체하면 됩니다.
 // 실행: node scripts/make-assets.mjs [--profile]   (--profile 을 붙여야 임시 프로필 사진을 다시 만듭니다)
 import { readFile } from "node:fs/promises";
@@ -11,17 +11,25 @@ const css = `@font-face{font-family:P;src:url(data:font/woff2;base64,${font});fo
 *{box-sizing:border-box;margin:0}body{font-family:P,sans-serif;background:#1E2A78;color:#fff}`;
 
 const photo = (await readFile("public/images/profile.webp")).toString("base64");
-const tagline = site.meta.title.split(" | ")[0];
+const tagline = site.meta.title.split(" | ")[1];
 const ogHtml = `<style>${css}
-body{width:1200px;height:630px;display:flex;align-items:center;justify-content:center;gap:56px}
-img{width:340px;height:340px;border-radius:50%;border:8px solid #fff;object-fit:cover;flex:none}
-.n{font-size:108px;font-weight:800;line-height:1.15}
-.o{margin-top:10px;font-size:42px;font-weight:500;color:#CBD2F6}
-hr{margin:30px 0 28px;border:0;height:3px;background:rgba(255,255,255,.35)}
-.t{font-size:48px;font-weight:700}
-</style><img src="data:image/webp;base64,${photo}" alt="">
-<div><div class="n">${site.person.name}</div>
-<div class="o">${site.person.role} · ${site.person.org}</div><hr><div class="t">${tagline}</div></div>`;
+body{position:relative;overflow:hidden;width:1200px;height:630px;background:#2147C6;display:flex;align-items:center;justify-content:center;gap:64px}
+.c1,.c2{position:absolute;border-radius:50%;background:#2C5BD7}
+.c1{width:760px;height:760px;left:-230px;top:-420px}
+.c2{width:560px;height:560px;right:-150px;bottom:-330px}
+img{position:relative;width:300px;height:300px;border-radius:50%;border:8px solid #fff;object-fit:cover;flex:none}
+.t{position:relative}
+.org{font-size:32px;font-weight:600;color:#DCE5FF}
+.n{margin-top:6px;font-size:100px;font-weight:800;line-height:1.1}
+.r{margin-top:6px;font-size:34px;font-weight:600;color:#DCE5FF}
+hr{margin:26px 0 24px;border:0;height:3px;width:560px;background:rgba(255,255,255,.4)}
+.l1{font-size:40px;font-weight:700}
+.l2{margin-top:6px;font-size:46px;font-weight:800;color:#FFC93C}
+</style><div class="c1"></div><div class="c2"></div>
+<img src="data:image/webp;base64,${photo}" alt="">
+<div class="t"><div class="org">${site.person.org}</div><div class="n">${site.person.name}</div>
+<div class="r">${site.person.role} · ${site.hero.eyebrow}</div><hr>
+<div class="l1">${site.hero.sub}</div><div class="l2">${tagline}</div></div>`;
 
 const iconHtml = `<style>${css}
 body{width:512px;height:512px;display:flex;align-items:center;justify-content:center;font-size:300px;font-weight:800;background:#1E2A78}
@@ -35,7 +43,7 @@ async function shot(html, w, h, out) {
   await page.screenshot({ path: out });
   await page.close();
 }
-await shot(ogHtml, 1200, 630, "public/images/og-v3.png");
+await shot(ogHtml, 1200, 630, "public/images/og-v4.png");
 await shot(iconHtml, 512, 512, "src/app/icon.png");
 await browser.close();
 
