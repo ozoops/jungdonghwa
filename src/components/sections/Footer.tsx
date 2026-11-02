@@ -3,7 +3,7 @@ import { FOOTER_ID } from "@/lib/ids";
 import { mailHref } from "@/lib/links";
 
 export function Footer() {
-  const { person, contact, footer } = site;
+  const { person, contact, footer, profile, ui } = site;
   return (
     <footer
       id={FOOTER_ID}
@@ -19,6 +19,19 @@ export function Footer() {
         </a>
       </p>
       <p>{person.region}</p>
+      {profile.officialLink && (
+        <p className="mt-2">
+          <a
+            href={profile.officialLink.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 items-center underline underline-offset-2"
+          >
+            {profile.officialLink.label}
+            <span className="sr-only"> ({ui.newWindow})</span>
+          </a>
+        </p>
+      )}
       <p className="mt-3">{footer.corporateNote}</p>
       {footer.reviewNo && <p className="mt-3">{footer.reviewNo}</p>}
     </footer>

@@ -13,7 +13,7 @@ import type { ShortcutItem } from "@/types/site";
 import { mailHref, scrollToSection, telHref } from "@/lib/links";
 
 const cellClass =
-  "flex min-h-[88px] w-full flex-col items-center justify-center gap-1.5 rounded-xl px-1 py-2 text-center text-[15px] leading-tight font-semibold text-ink hover:bg-tint";
+  "flex min-h-[88px] w-full flex-col items-center justify-start gap-1.5 rounded-xl px-0.5 pt-2 pb-2 text-center text-[15px] leading-tight font-semibold text-ink hover:bg-tint";
 
 function CellInner({ item }: { item: ShortcutItem }) {
   return (
@@ -60,6 +60,17 @@ function Cell({ item }: { item: ShortcutItem }) {
     );
   }
 
+  if (item.action === "official") {
+    const link = site.profile.officialLink;
+    if (!link) return null;
+    return (
+      <a href={link.url} target="_blank" rel="noopener noreferrer" className={cellClass}>
+        <CellInner item={item} />
+        <span className="sr-only">{ui.newWindow}</span>
+      </a>
+    );
+  }
+
   if (item.action === "chat") {
     return (
       <a href={contact.chatUrl} target="_blank" rel="noopener noreferrer" className={cellClass}>
@@ -85,7 +96,7 @@ export function ShortcutCard() {
         <h2 id="shortcut-title" className="mb-2 px-1 text-base font-bold">
           {shortcuts.title}
         </h2>
-        <div className="grid grid-cols-3 gap-x-1 gap-y-1">
+        <div className="grid grid-cols-4 gap-x-0.5 gap-y-1">
           {shortcuts.items.map((item) => (
             <Cell key={item.id} item={item} />
           ))}

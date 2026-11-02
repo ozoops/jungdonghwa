@@ -53,6 +53,14 @@ const siteConfig = {
       { id: "prep", label: "점검 준비물", icon: "clipboard-list", action: "dialog" },
       { id: "steps", label: "3단계 점검", icon: "list-checks", action: "scroll", target: "steps" },
       { id: "faq", label: "자주 묻는 질문", icon: "circle-help", action: "scroll", target: "faq" },
+      {
+        id: "about",
+        label: "정동화 소개",
+        icon: "user-round",
+        action: "scroll",
+        target: "profile",
+      },
+      { id: "official", label: "디지털 프로필", icon: "badge-check", action: "official" },
     ],
     dialog: {
       title: "점검 준비물",

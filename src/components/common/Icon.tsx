@@ -3,11 +3,13 @@ import {
   CircleHelp,
   HeartPulse,
   Hourglass,
+  BadgeCheck,
   ListChecks,
   Mail,
   MessageCircle,
   Phone,
   SearchCheck,
+  UserRound,
   Users,
   type LucideProps,
 } from "lucide-react";
@@ -24,6 +26,8 @@ const icons = {
   "heart-pulse": HeartPulse,
   hourglass: Hourglass,
   users: Users,
+  "user-round": UserRound,
+  "badge-check": BadgeCheck,
 } satisfies Record<IconName, React.ComponentType<LucideProps>>;
 
 export function Icon({ name, ...props }: { name: IconName } & LucideProps) {

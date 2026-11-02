@@ -10,12 +10,16 @@ export type IconName =
   | "search-check"
   | "heart-pulse"
   | "hourglass"
-  | "users";
+  | "users"
+  | "user-round"
+  | "badge-check";
 
 export type ShortcutItem =
   | { id: string; label: string; icon: IconName; action: "tel" | "chat" | "mail" }
   | { id: string; label: string; icon: IconName; action: "scroll"; target: SectionKey }
-  | { id: string; label: string; icon: IconName; action: "dialog" };
+  | { id: string; label: string; icon: IconName; action: "dialog" }
+  /** profile.officialLink 로 이동합니다. officialLink 가 null 이면 칸이 사라집니다. */
+  | { id: string; label: string; icon: IconName; action: "official" };
 
 export interface ConcernItem {
   id: string;
