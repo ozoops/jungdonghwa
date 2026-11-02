@@ -1,10 +1,12 @@
 import Image from "next/image";
+import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { SectionShell } from "@/components/common/SectionShell";
 import { site } from "@/config/site";
 import { ShareTools } from "./ShareTools";
 
 export function Profile() {
-  const { person, profile, careers } = site;
+  const { person, profile, careers, ui } = site;
   return (
     <SectionShell id="profile" title={profile.title} tone="white">
       <div className="flex flex-col items-center text-center">
@@ -51,6 +53,16 @@ export function Profile() {
           <dd className="text-base font-bold">{person.specialty}</dd>
         </div>
       </dl>
+
+      {profile.officialLink && (
+        <Button asChild size="lg" className="mt-6 w-full">
+          <a href={profile.officialLink.url} target="_blank" rel="noopener noreferrer">
+            <ExternalLink aria-hidden className="size-5" />
+            {profile.officialLink.label}
+            <span className="sr-only"> ({ui.newWindow})</span>
+          </a>
+        </Button>
+      )}
 
       <ShareTools />
     </SectionShell>

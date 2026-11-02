@@ -123,6 +123,10 @@ const siteConfig = {
     careersTitle: "경력",
     regionLabel: "활동 지역",
     specialtyLabel: "전문 분야",
+    officialLink: {
+      label: "삼성생명 디지털 프로필 보기",
+      url: "https://mws.samsunglife.com:8440/#/main/bc/TSSBC500M?mdigitkey=0002285859",
+    },
   },
 
   careers: [

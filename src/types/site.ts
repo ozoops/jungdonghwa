@@ -103,6 +103,8 @@ export interface SiteConfig {
     careersTitle: string;
     regionLabel: string;
     specialtyLabel: string;
+    /** 삼성생명 디지털 프로필 등 외부 소개 페이지. null 이면 버튼이 사라집니다. */
+    officialLink: { label: string; url: string } | null;
   };
   careers: CareerItem[];
   faq: { title: string; items: FaqItem[] };
